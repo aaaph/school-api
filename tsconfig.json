@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "target": "es6",
+
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+
+    "sourceMap": true,
+    "lib": ["es6"],
+    "outDir": "dist",
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "paths": {
+      "types/*": ["src/types/*"],
+      "config/*": ["src/config/*"],
+      "controllers/*": ["src/controllers/*"],
+      "helpers/*": ["src/helpers/*"],
+      "middlewares/*": ["src/middlewares/*"],
+      "models/*": ["src/models/*"]
+    },
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*"]
+}
