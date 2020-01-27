@@ -1,0 +1,28 @@
+{
+  "name": "school-api",
+  "version": "0.0.1",
+  "description": "simple school model realized by express.js using REST architecture",
+  "main": "server.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riki4iki/school-api.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "postgres",
+    "typescript",
+    "school",
+    "rest",
+    "api"
+  ],
+  "author": "Ivan Aphanasyev <nekaktotak2@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riki4iki/school-api/issues"
+  },
+  "homepage": "https://github.com/riki4iki/school-api#readme"
+}
