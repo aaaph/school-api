@@ -2,7 +2,7 @@
   "name": "school-api",
   "version": "0.0.1",
   "description": "simple school model realized by express.js using REST architecture",
-  "main": "server.ts",
+  "main": "dist/server.js",
   "scripts": {
     ".": "nodemon --watch src --watch libs ./src/server.ts",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
@@ -11,7 +11,8 @@
     "start": "npm run serve",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
-    "watch-ts": "tsc -w"
+    "watch-ts": "tsc -w",
+    "watch": "nodemon --exec \"npm run build-ts && npm run start\" --watch src --ext ts"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,6 @@
   },
   "homepage": "https://github.com/riki4iki/school-api#readme",
   "dependencies": {
-    "@types/crypto-js": "^3.1.43",
     "body-parser": "^1.19.0",
     "class-validator": "^0.11.0",
     "cors": "^2.8.5",
@@ -43,6 +43,7 @@
     "http-errors": "^1.7.3",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
+    "module-alias": "^2.2.2",
     "morgan": "^1.9.1",
     "pg": "^7.17.1",
     "pg-connection-string": "^2.1.0",
@@ -51,6 +52,7 @@
   "devDependencies": {
     "@types/body-parser": "^1.17.1",
     "@types/cors": "^2.8.6",
+    "@types/crypto-js": "^3.1.43",
     "@types/eslint": "^6.1.7",
     "@types/express": "^4.17.2",
     "@types/http-errors": "^1.6.3",
@@ -65,5 +67,13 @@
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
+  },
+  "_moduleAliases": {
+    "types": "src/types",
+    "config": "src/config",
+    "controllers": "src/controllers",
+    "helpers": "src/helpers",
+    "middlewares": "src/middlewares",
+    "models": "src/models"
   }
 }

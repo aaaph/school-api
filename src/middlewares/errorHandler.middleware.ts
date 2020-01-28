@@ -7,7 +7,7 @@ const errorHandler = (
   next: NextFunction
 ) => {
   response.setHeader("Content-Type", "application/json");
-  console.log(err.message);
+  console.log(err.stack);
   const status = err.status || err.statusCode || 500;
   const message = err.message;
   response.status(status).send(message);

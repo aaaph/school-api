@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
 
+import "module-alias/register";
+
 import { router } from "./routes";
 import { errorMiddleware } from "./middlewares";
 

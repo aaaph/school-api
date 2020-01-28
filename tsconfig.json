@@ -8,19 +8,19 @@
 
     "noImplicitAny": true,
     "moduleResolution": "node",
+    "rootDir": "./src",
 
     "sourceMap": true,
     "lib": ["es6"],
-    "outDir": "dist",
-    "baseUrl": ".",
-    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": "./src",
     "paths": {
-      "types/*": ["src/types/*"],
-      "config/*": ["src/config/*"],
-      "controllers/*": ["src/controllers/*"],
-      "helpers/*": ["src/helpers/*"],
-      "middlewares/*": ["src/middlewares/*"],
-      "models/*": ["src/models/*"]
+      "types/*": ["types/*"],
+      "config/*": ["config/*"],
+      "controllers/*": ["controllers/*"],
+      "helpers/*": ["helpers/*"],
+      "middlewares/*": ["iddlewares/*"],
+      "models/*": ["models/*"]
     },
 
     "experimentalDecorators": true,
