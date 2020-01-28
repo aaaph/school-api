@@ -1,2 +1,2 @@
-export * from "./ormconfig";
-export * from "./jwt";
+export * from "./orm.config";
+export * from "./jwt.config";
