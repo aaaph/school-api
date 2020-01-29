@@ -44,29 +44,27 @@ const createRefresh = async (account: Account): Promise<string> => {
 const UNIXSeconds = async (): Promise<number> => {
   return Math.round(new Date().getTime() / 1000);
 };
-
-const createJWTPair = async (account: Account): Promise<IJWTPair> => {
-  //here need create access token + refresh token and return in IJWTPair
-  const access = await createAccess(account.id);
-  const refresh = await createRefresh(account);
-  const expiresIn = (await UNIXSeconds()) + JWTConfig.accessLife;
-  const pair: IJWTPair = {
-    accessToken: access,
-    refreshToken: refresh,
-    expiresIn: expiresIn
-  };
-  return pair;
-};
-const decodeJWT = async (token: string): Promise<IJWTPayload> => {
-  //here need to decode input token by jsonwebtoken lib and return in JWTPayload
-  return;
-};
-
-const payload = async (token: string): Promise<IJWTPayload> => {
-  try {
-    const body = await verify(token, JWTConfig.secret);
-    return <IJWTPayload>body;
-  } catch (err) {
-    throw err;
+class JWTService {
+  public static async createPair(account: Account): Promise<IJWTPair> {
+    //here need create access token + refresh token and return in IJWTPair
+    const access = await createAccess(account.id);
+    const refresh = await createRefresh(account);
+    const expiresIn = (await UNIXSeconds()) + JWTConfig.accessLife;
+    const pair: IJWTPair = {
+      accessToken: access,
+      refreshToken: refresh,
+      expiresIn: expiresIn
+    };
+    return pair;
   }
-};
+
+  public static async getPayload(token: string): Promise<IJWTPayload> {
+    try {
+      const body = await verify(token, JWTConfig.secret);
+      return <IJWTPayload>body;
+    } catch (err) {
+      throw err;
+    }
+  }
+}
+export { JWTService };

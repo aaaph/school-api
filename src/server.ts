@@ -1,8 +1,5 @@
 import { createServer } from "http";
 import { app } from "./app";
-import { config } from "dotenv";
-import { resolve } from "path";
-config({ path: resolve(__dirname, "config/.env") });
 
 import { connect as databaseConnect } from "./config";
 

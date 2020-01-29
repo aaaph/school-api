@@ -19,7 +19,7 @@
       "config/*": ["config/*"],
       "controllers/*": ["controllers/*"],
       "helpers/*": ["helpers/*"],
-      "middlewares/*": ["iddlewares/*"],
+      "middlewares/*": ["middlewares/*"],
       "models/*": ["models/*"]
     },
 

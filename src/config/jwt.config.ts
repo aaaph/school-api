@@ -1,5 +1,9 @@
 import { IJWTOptions } from "types/index";
 
+import { resolve } from "path";
+import { config } from "dotenv";
+config({ path: resolve(__dirname, ".env") });
+
 const isDev = process.env.NODE_ENV === "development";
 const ONE_HOUR_SECONDS = 3600;
 const accessTokenLife = isDev ? ONE_HOUR_SECONDS * 24 : ONE_HOUR_SECONDS * 1;
