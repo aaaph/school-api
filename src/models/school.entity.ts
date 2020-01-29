@@ -1,30 +1,33 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import {} from "class-validator";
+import { Min, Max, Length } from "class-validator";
 
 import Group from "./group.entity";
 import Teacher from "./teacher.entity";
 
 @Entity()
 export default class School {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+   @PrimaryGeneratedColumn("uuid")
+   id: string;
 
-  //unique
-  @Column()
-  name: string;
+   //unique
+   @Length(6, 50)
+   @Column({ unique: true })
+   name: string;
 
-  @Column()
-  days: number;
+   @Min(1)
+   @Max(7)
+   @Column()
+   days: number;
 
-  @OneToMany(
-    () => Group,
-    grp => grp.school
-  )
-  groups: Group[];
+   @OneToMany(
+      () => Group,
+      grp => grp.school,
+   )
+   groups: Group[];
 
-  @OneToMany(
-    () => Teacher,
-    tch => tch.school
-  )
-  teachers: Teacher[];
+   @OneToMany(
+      () => Teacher,
+      tch => tch.school,
+   )
+   teachers: Teacher[];
 }

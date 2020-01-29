@@ -74,6 +74,7 @@
     "controllers": "src/controllers",
     "helpers": "src/helpers",
     "middlewares": "src/middlewares",
-    "models": "src/models"
+    "models": "src/models",
+    "db": "src/db"
   }
 }
