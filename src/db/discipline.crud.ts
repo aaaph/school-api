@@ -1,4 +1,4 @@
-import { getManager, Repository, Equal, Not } from "typeorm";
+import { getManager, Repository, Equal, Not, In } from "typeorm";
 import { BadRequest } from "http-errors";
 import { validate, ValidationError } from "class-validator";
 
@@ -14,6 +14,14 @@ export default class DisciplineCRUD {
    public static async selectTarget(id: string): Promise<Discipline> {
       const discipline = await getDisciplineById(id);
       return discipline;
+   }
+   public static async selectByIds(arr: string[]): Promise<Discipline[]> {
+      console.log(arr);
+      const discRepository: Repository<Discipline> = getManager().getRepository(Discipline);
+      const disciplines = await discRepository.find({ where: { id: In(arr) } });
+      console.log(disciplines);
+
+      return disciplines;
    }
    public static async insert(body: IDisciplineBody): Promise<Discipline> {
       const discRepository: Repository<Discipline> = getManager().getRepository(Discipline);
@@ -56,7 +64,7 @@ export default class DisciplineCRUD {
    public static async del(id: string) {
       const discipline = await getDisciplineById(id);
       const disciplineRepository: Repository<Discipline> = getManager().getRepository(Discipline);
-      const removed = disciplineRepository.remove(discipline);
+      const removed = await disciplineRepository.remove(discipline);
       return removed;
    }
 }

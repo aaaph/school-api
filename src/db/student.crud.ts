@@ -39,11 +39,16 @@ export default class StudentCRUD {
    public static async update(id: string, group: Group, body: IStudentBody): Promise<Student> {
       const before = await findStudent(id, group);
       const studentRepository: Repository<Student> = getManager().getRepository(Student);
+
       const student = new Student();
+
       student.id = before.id;
+      student.group = before.group;
       student.firstName = body.firstName;
       student.secondName = body.secondName;
       student.age = body.age;
+
+      console.log(student);
 
       const errors = await validate(student);
       if (errors.length > 0) {
@@ -67,7 +72,7 @@ export default class StudentCRUD {
 
 const findStudent = async (id: string, group: Group) => {
    const studentRepository: Repository<Student> = getManager().getRepository(Student);
-   const student = await studentRepository.findOne({ id, group });
+   const student = await studentRepository.findOne({ where: { id, group }, relations: ["group"] });
    if (!student) {
       const badRequest = new BadRequest("student not found");
       throw badRequest;
