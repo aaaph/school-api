@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express";
+import { ISchoolRequst } from "types/express";
 
 import { SchoolCrud } from "db/index";
 
-export default class SchoolServie {
+export default class SchoolService {
    public static async getAll(req: Request, res: Response, next: NextFunction) {
       try {
          const all = await SchoolCrud.selectAll();
@@ -43,6 +44,15 @@ export default class SchoolServie {
       try {
          const deleted = await SchoolCrud.del(req.params.id);
          res.sendStatus(204);
+      } catch (err) {
+         await next(err);
+      }
+   }
+   public static async targetMiddleware(req: ISchoolRequst, res: Response, next: NextFunction) {
+      try {
+         const target = await SchoolCrud.selectTargetById(req.params.id);
+         req.school = target;
+         await next();
       } catch (err) {
          await next(err);
       }
