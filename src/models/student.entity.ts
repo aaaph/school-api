@@ -4,7 +4,7 @@ import { Length, Min, Max, Equals } from "class-validator";
 import { IHuman } from "types/interfaces";
 
 import Group from "./group.entity";
-import Progres from "./progres.entity";
+import Progress from "./progress.entity";
 
 @Entity()
 export default class Student implements IHuman {
@@ -31,11 +31,11 @@ export default class Student implements IHuman {
    group: Group;
 
    @OneToMany(
-      () => Progres,
-      progres => progres.student,
+      () => Progress,
+      progress => progress.student,
       { onDelete: "CASCADE" },
    )
-   rating: Progres[];
+   rating: Progress[];
 
    public validateAge(): boolean {
       return this.age === this.group.course + 5;

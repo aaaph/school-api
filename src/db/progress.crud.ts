@@ -9,13 +9,13 @@ import { ValidationBadRequest } from "types/errors";
 export default class ProgressService {
    public static async getAllByStudent(student: Student) {
       const progresReposityory: Repository<Progress> = getManager().getRepository(Progress);
-      const progress = await progresReposityory.find({ student });
+      const progress = await progresReposityory.find({ where: { student }, relations: ["discipline"] });
 
       return progress;
    }
    public static async getTargetByStudent(id: string, student: Student) {
       const progressRepository: Repository<Progress> = getManager().getRepository(Progress);
-      const progress = await progressRepository.findOne({ id, student });
+      const progress = await progressRepository.findOne({ where: { id, student }, relations: ["discipline"] });
 
       if (!progress) {
          const err = new BadRequest("progres not fount");

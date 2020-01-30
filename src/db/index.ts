@@ -6,3 +6,4 @@ export { default as GroupCrud } from "./group.crud";
 export { default as StudentCrud } from "./student.crud";
 export { default as TeacherCrud } from "./teacher.crud";
 export { default as ScheduleCrud } from "./schedule.crud";
+export { default as ProgressCrud } from "./progress.crud";

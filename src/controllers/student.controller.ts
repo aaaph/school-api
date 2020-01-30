@@ -1,5 +1,5 @@
 import { Response, NextFunction } from "express";
-import { IGroupRequest } from "types/express";
+import { IGroupRequest, IStudentRequest } from "types/express";
 
 import crud from "db/student.crud";
 
@@ -42,6 +42,15 @@ export default class StudentService {
       try {
          const removed = await crud.del(req.params.id, req.group);
          res.sendStatus(204);
+      } catch (err) {
+         await next(err);
+      }
+   }
+   public static async targetMiddleware(req: IStudentRequest, res: Response, next: NextFunction) {
+      try {
+         const target = await crud.selectTarget(req.params.id, req.group);
+         req.student = target;
+         await next();
       } catch (err) {
          await next(err);
       }
