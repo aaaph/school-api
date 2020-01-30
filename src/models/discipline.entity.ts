@@ -3,6 +3,7 @@ import { Min, Max, Length } from "class-validator";
 
 import Teacher from "./teacher.entity";
 import Lesson from "./lesson.entity";
+import Progress from "./progress.entity";
 
 @Entity()
 export default class Discipline {
@@ -27,4 +28,10 @@ export default class Discipline {
    )
    @JoinColumn()
    lessons: Lesson[];
+
+   @OneToMany(
+      () => Progress,
+      progress => progress.discipline,
+   )
+   progres: Progress[];
 }

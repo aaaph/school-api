@@ -4,7 +4,7 @@ import { Min, Max } from "class-validator";
 import { Student, Discipline } from "models/index";
 
 @Entity()
-export default class Progres {
+export default class Progress {
    @PrimaryGeneratedColumn("uuid")
    id: string;
 

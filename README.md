@@ -1,57 +1,64 @@
-install
-'git clone https://github.com/riki4iki/school-api.git'
-'npm i'
-'npm run .' - run nodemon
+-  install
+   'git clone https://github.com/riki4iki/school-api.git'
+   'npm i'
+   create enviroment in config/.env (check example.env)
+   'npm run .' - run nodemon
 
-endpoints
+-  endpoints
 
--  api/v1/auth/sign-up - post - body[login, password] - return 201
--  api/v1/auth/sign-in - post - body[login, password] - return jwt pair, 200
--  protected by token Authorization(access_token)
+api/v1/auth/sign-up - post - body[login, password] - return 201
+api/v1/auth/sign-in - post - body[login, password] - return jwt pair, 200
+next endpoints protected by token Authorization(access_token)
 
--  api/v1/discipline - get - return discipline[]
--  api/v1/discipline/:id - get - param[id] return discipline
--  api/v1/discipline - post - body[couse, title] return discipline
--  api/v1/discipline/:id - put - param[id], body[couse, title] return discipline
--  api/v1/discipline/:id- del - param[id] return discipline
+api/v1/discipline - get - return discipline[] - headers{}
+api/v1/discipline/:id - get - param[id] return discipline
+api/v1/discipline - post - body[couse, title] return discipline
+api/v1/discipline/:id - put - param[id], body[couse, title] return discipline
+api/v1/discipline/:id- del - param[id] return discipline
 
--  api/v1/school - get - return school[]
--  api/v1/school/:id - get - param[id] return school
--  api/v1/school - post - body[name,days] return school
--  api/v1/school/:id - put - param[id], body[name,days] return school
--  api/v1/school/:id - delete - param[id] return school
+api/v1/school - get - return school[]
+api/v1/school/:id - get - param[id] return school
+api/v1/school - post - body[name,days] return school
+api/v1/school/:id - put - param[id], body[name,days] return school
+api/v1/school/:id - delete - param[id] return school
 
--  api/v1/school/:schoolId/teacher - get - return teacher[]
--  api/v1/school/:schoolId/teacher/:id - get - param[id] return teacher
--  api/v1/school/:schoolId/teacher - post - body[firstName, secondName, age, disciplines[]] return teacher
--  api/v1/school/:schoolId/teacher/:id - put - param[id], body[firstName, secondName, age, disciplines[]] return teacher
--  api/v1/school/:schoolId/teacher/:id - del - param[id] return teacher
+api/v1/school/:schoolId/teacher - get - return teacher[]
+api/v1/school/:schoolId/teacher/:id - get - param[id] return teacher
+api/v1/school/:schoolId/teacher - post - body[firstName, secondName, age, disciplines[]] return teacher
+api/v1/school/:schoolId/teacher/:id - put - param[id], body[firstName, secondName, age, disciplines[]] return teacher
+api/v1/school/:schoolId/teacher/:id - del - param[id] return teacher
 
--  api/v1/school/:schoolId/group - get - return group[]
--  api/v1/school/:schoolId/group/:id - get - param[id] return group
--  api/v1/school/:schoolId/group - post - body[course, symbol] return group
--  api/v1/school/:schoolId/group/:id - put - param[id], body[course, symbol] return group
--  api/v1/school/:schoolId/group/:id - del - param[id] return group
+api/v1/school/:schoolId/group - get - return group[]
+api/v1/school/:schoolId/group/:id - get - param[id] return group
+api/v1/school/:schoolId/group - post - body[course, symbol] return group
+api/v1/school/:schoolId/group/:id - put - param[id], body[course, symbol] return group
+api/v1/school/:schoolId/group/:id - del - param[id] return group
 
--  api/v1/school/:schoolId/group/:groupId/student - get - return student[]
--  api/v1/school/:schoolId/group/:groupId/student/:id - get - param[id] return student
--  api/v1/school/:schoolId/group/:groupId/student - post - body[firstName, secondName, age] return student
--  api/v1/school/:schoolId/group/:groupId/student/:id - put - param[id], body[firstName, secondName, age] return student
--  api/v1/school/:schoolId/group/:groupId/student/:id - delete - param[id] return student
+api/v1/school/:schoolId/group/:groupId/student - get - return student[]
+api/v1/school/:schoolId/group/:groupId/student/:id - get - param[id] return student
+api/v1/school/:schoolId/group/:groupId/student - post - body[firstName, secondName, age] return student
+api/v1/school/:schoolId/group/:groupId/student/:id - put - param[id], body[firstName, secondName, age] return student
+api/v1/school/:schoolId/group/:groupId/student/:id - delete - param[id] return student
 
--  api/v1/school/:schoolId/group/:groupId/schedule - get - return schedule[]
--  api/v1/school/:schoolId/group/:groupId/schedule/:id - get - param[id] return schedule
--  api/v1/school/:schoolId/group/:groupId/schedule - post - body[day, lessonTitle, lessonNumber, teacher] return schedule
--  api/v1/school/:schoolId/group/:groupId/schedule/:id- put - param[id],body[day, lessonTitle, lessonNumber, teacher] return schedule
--  api/v1/school/:schoolId/group/:groupId/schedule/:id - delete - param[id] return schedule
+api/v1/school/:schoolId/group/:groupId/schedule - get - return schedule[]
+api/v1/school/:schoolId/group/:groupId/schedule/:id - get - param[id] return schedule
+api/v1/school/:schoolId/group/:groupId/schedule - post - body[day, lessonTitle, lessonNumber, teacher] return schedule
+api/v1/school/:schoolId/group/:groupId/schedule/:id- put - param[id],body[day, lessonTitle, lessonNumber, teacher] return schedule
+api/v1/school/:schoolId/group/:groupId/schedule/:id - delete - param[id] return schedule
 
--  api/v1/school/:schoolId/teacher/:teacher/schedule - get - return schedule[]
--  api/v1/school/:schoolId/teacher/:teacher/schedule/:id - get - param[id] return schedule
--  api/v1/school/:schoolId/teacher/:teacher/schedule - post - body[day, lessonTitle, lessonNumber, group] return schedule
--  api/v1/school/:schoolId/teacher/:teacher/schedule/:id - put - param[id], body[day, lessonTitle, lessonNumber, group] return schedule
--  api/v1/school/:schoolId/teacher/:teacher/schedule/:id - delete - param[id] return schedule
+api/v1/school/:schoolId/teacher/:teacher/schedule - get - return schedule[]
+api/v1/school/:schoolId/teacher/:teacher/schedule/:id - get - param[id] return schedule
+api/v1/school/:schoolId/teacher/:teacher/schedule - post - body[day, lessonTitle, lessonNumber, group] return schedule
+api/v1/school/:schoolId/teacher/:teacher/schedule/:id - put - param[id], body[day, lessonTitle, lessonNumber, group] return schedule
+api/v1/school/:schoolId/teacher/:teacher/schedule/:id - delete - param[id] return schedule
 
-Необходим для реализации авторизации через jwt. Не является освновной целью, поэтому будет возможность только создавать аккаунты через регестрацию
+-  screen-db
+   ![](images/filename school-api-db-screen.png)
+
+-  notes
+
+auth router необходим для реализации авторизации через jwt.
+Не является освновной целью, поэтому будет возможность только создавать аккаунты через регестрацию
 Ендпроинтов для обновления инфы аккаунта/удаления смысла делать не вижу.
 
 school - name
