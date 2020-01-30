@@ -5,6 +5,7 @@ export { default as School } from "./school.entity";
 
 export { default as Group } from "./group.entity";
 export { default as Student } from "./student.entity";
+export { default as Progres } from "./progres.entity";
 
 export { default as Teacher } from "./teacher.entity";
 

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany, ManyToOne, JoinColumn, getManager, Repository } from "typeorm";
 import { Length, Min } from "class-validator";
 
 import { IHuman } from "types/interfaces";
@@ -40,4 +40,11 @@ export default class Teacher implements IHuman {
    )
    @JoinColumn()
    school: School;
+
+   public async isMatchDiscipline(discipline: Discipline): Promise<Boolean> {
+      const teacherRepository = getManager().getRepository(Teacher);
+      const teacherWithDisciplines = await teacherRepository.findOne({ where: { id: this.id }, relations: ["disciplines"] });
+      const isMatch = teacherWithDisciplines.disciplines.filter(item => item.id === discipline.id).length > 0;
+      return isMatch;
+   }
 }

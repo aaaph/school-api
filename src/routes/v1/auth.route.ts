@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { AuthService } from "controllers/index";
+import { AuthService } from "controllers/localAuth.controller";
 
 const authRouter = Router();
 

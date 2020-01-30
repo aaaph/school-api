@@ -1,5 +1,5 @@
 import { Response, NextFunction } from "express";
-import { ISchoolRequst } from "types/express";
+import { ISchoolRequst, ITeacherRequest } from "types/express";
 
 import { stringToArray } from "helpers/index";
 import { DisciplineCrud, TeacherCrud as crud } from "db/index";
@@ -57,6 +57,15 @@ export default class TeacherService {
       try {
          const removed = await crud.del(req.params.id, req.school);
          res.sendStatus(204);
+      } catch (err) {
+         await next(err);
+      }
+   }
+   public static async targetMiddleware(req: ITeacherRequest, res: Response, next: NextFunction) {
+      try {
+         const target = await crud.selectTarget(req.params.id, req.school);
+         req.teacher = target;
+         await next();
       } catch (err) {
          await next(err);
       }

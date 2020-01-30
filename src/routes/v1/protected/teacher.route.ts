@@ -3,7 +3,7 @@ import { Router } from "express";
 import controller from "controllers/teacher.controller";
 import { uuidMiddleware } from "middlewares/index";
 
-import { teacgetSchedule as scheduleRouter } from "./teacherSchedule.route";
+import { teacherSchedule as scheduleRouter } from "./teacherSchedule.route";
 
 const teacherRouter = Router();
 
@@ -13,6 +13,6 @@ teacherRouter.post("/", controller.create);
 teacherRouter.put("/:id", uuidMiddleware, controller.update);
 teacherRouter.delete("/:id", uuidMiddleware, controller.del);
 
-teacherRouter.use("/:id", uuidMiddleware, controller.getTarget, scheduleRouter);
+teacherRouter.use("/:id/schedule", uuidMiddleware, controller.targetMiddleware, scheduleRouter);
 
 export { teacherRouter };

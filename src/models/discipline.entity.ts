@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { Min, Max, Length } from "class-validator";
 
 import Teacher from "./teacher.entity";
+import Lesson from "./lesson.entity";
 
 @Entity()
 export default class Discipline {
@@ -19,4 +20,11 @@ export default class Discipline {
 
    @ManyToMany(type => Teacher)
    teachers: Teacher;
+
+   @OneToMany(
+      () => Lesson,
+      lesson => lesson.discipline,
+   )
+   @JoinColumn()
+   lessons: Lesson[];
 }

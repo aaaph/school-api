@@ -18,7 +18,7 @@ export const stringToArray = async (toParse: string[] | string): Promise<string[
    }
 };
 
-const uuidValidator = (str: string): string => {
+export const uuidValidator = (str: string): string => {
    const isUUID = /[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/.test(str);
    if (!isUUID) {
       const error = new Error(`input string: ${str}is not match in uuid pattern`);

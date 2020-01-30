@@ -16,12 +16,20 @@ export default class DisciplineCRUD {
       return discipline;
    }
    public static async selectByIds(arr: string[]): Promise<Discipline[]> {
-      console.log(arr);
       const discRepository: Repository<Discipline> = getManager().getRepository(Discipline);
       const disciplines = await discRepository.find({ where: { id: In(arr) } });
-      console.log(disciplines);
 
       return disciplines;
+   }
+   public static async selectByTitleAndCourse(title: string, course: number): Promise<Discipline> {
+      const disciplineRepository: Repository<Discipline> = getManager().getRepository(Discipline);
+      console.log(title, course);
+      const discipline = await disciplineRepository.findOne({ title, course });
+      if (!discipline) {
+         const badRequest = new BadRequest("discipline not found");
+         throw badRequest;
+      }
+      return discipline;
    }
    public static async insert(body: IDisciplineBody): Promise<Discipline> {
       const discRepository: Repository<Discipline> = getManager().getRepository(Discipline);

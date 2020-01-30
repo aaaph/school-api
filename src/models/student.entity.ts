@@ -1,9 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from "typeorm";
 import { Length, Min, Max, Equals } from "class-validator";
 
 import { IHuman } from "types/interfaces";
 
 import Group from "./group.entity";
+import Progres from "./progres.entity";
 
 @Entity()
 export default class Student implements IHuman {
@@ -28,6 +29,13 @@ export default class Student implements IHuman {
       group => group.students,
    )
    group: Group;
+
+   @OneToMany(
+      () => Progres,
+      progres => progres.student,
+      { onDelete: "CASCADE" },
+   )
+   rating: Progres[];
 
    public validateAge(): boolean {
       return this.age === this.group.course + 5;
